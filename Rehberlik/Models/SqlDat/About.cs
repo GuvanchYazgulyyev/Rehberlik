@@ -11,7 +11,7 @@ namespace Rehberlik.Models.SqlDat
         public string Description { get; set; }
         public string Image { get; set; }
         public DateTime Entrydate { get; set; }
-        public string IsDelete { get; set; }
+        public bool IsDelete { get; set; }
 
     }
 }
