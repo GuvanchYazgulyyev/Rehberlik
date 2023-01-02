@@ -1,0 +1,263 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.About>
+@{
+    ViewData["Title"] = "Hakkimizda";
+    Layout = "~/Views/_VitrinLayout.cshtml";
+}
+
+<!-- Breadcrumb Section Start -->
+<div class="section breadcrumb-section">
+    <span class="shape shape-one layer" data-speed="1">
+        <img src="~/3/assets/images/slider/shape-2.png" alt="Shape">
+    </span>
+    <span class="shape shape-two layer" data-speed="2">
+        <img src="~/3/assets/images/slider/shape-5.png" alt="Shape">
+    </span>
+    <span class="shape shape-three wow pulse" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-7.png" alt="Shape">
+    </span>
+    <span class="shape shape-four wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-9.png" alt="Shape">
+    </span>
+    <span class="shape shape-five wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-10.png" alt="Shape">
+    </span>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 align-items-center text-center">
+                <!-- Breadcrumb Wrapper Start -->
+                <div class="breadcrumb-wrapper">
+                    <h1 class="title">Hakkımızda</h1>
+                </div>
+                <!-- Breadcrumb Wrapper End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section End -->
+<!-- About Section End -->
+@foreach (var x in Model)
+{
+    <div class="about section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="main-image">
+@*                        <img class="about-img js-tilt" src="~/3/assets/images/about/about.png" alt="about">
+*@                        <img class="about-img js-tilt" src="@x.Image" alt="about">
+                        <div class="shape-one wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
+                            <img src="~/3/assets/images/about/shape-one.png" alt="Shape">
+                        </div>
+                        <div class="shape-two wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
+                            <img src="~/3/assets/images/about/shape-two.png" alt="Shape">
+                        </div>
+                        <div class="about-icon icon-one wow flipInY" data-wow-duration="2s" data-wow-delay=".6s">
+                            <img src="~/3/assets/images/icons/icon-1.png" alt="Icon">
+                        </div>
+                        <div class="about-icon icon-two wow flipInY" data-wow-duration="2s" data-wow-delay=".6s">
+                            <img src="~/3/assets/images/icons/icon-2.png" alt="Icon">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <div class="section-head wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                            <span class="subtitle">@x.Title</span>
+                            <h2 class="title">@x.LoverTitle</h2>
+                            <p class="text-two">@x.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- About Section Start -->
+
+
+
+
+<!-- Funfact Section Start -->
+<div class="funfact">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="funfact-bg funfact-bg-two">
+                    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 mb-n5">
+                        <div class="col mb-5 wow fadeInUp" data-wow-duration=".7s" data-wow-delay=".1s">
+                            <div class="single-funfact text-start">
+                                <div class="funfact-inner">
+                                    <span class="odometer" data-count-to="120"></span>
+                                    <span class="increment">+</span>
+                                </div>
+                                <div class="funfact-content">
+                                    <p class="text">Total <br>Countries</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-5 wow fadeInUp" data-wow-duration=".7s" data-wow-delay=".3s">
+                            <div class="single-funfact text-start">
+                                <div class="funfact-inner">
+                                    <span class="odometer" data-count-to="200"></span>
+                                    <span class="increment">+</span>
+                                </div>
+                                <div class="funfact-content">
+                                    <p class="text">Worldwide <br>Companies</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-5 wow fadeInUp" data-wow-duration=".7s" data-wow-delay=".5s">
+                            <div class="single-funfact text-start">
+                                <div class="funfact-inner">
+                                    <span class="odometer" data-count-to="50"></span>
+                                    <span class="text">K</span>
+                                    <span class="increment">+</span>
+                                </div>
+                                <div class="funfact-content">
+                                    <p class="text">Yearly <br> Revinew</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Funfact Section End -->
+<!-- Team Section Start -->
+<div class="team-section section-padding team-about-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
+                <!-- Section Title Start -->
+                <div class="section-title-center section-head text-center">
+                    <span class="subtitle">Team Members</span>
+                    <h2 class="title">Our Team Members</h2>
+                    <p class="text mx-auto mb-0">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. when the musics over turn off the light</p>
+                </div>
+                <!-- Section Title End  -->
+            </div>
+        </div>
+        <div class="row mb-n30">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-30 team-wrapper wow fadeInUp" data-wow-duration=".6s" data-wow-delay=".1s">
+                <!-- Single Team Wrapper Start -->
+                <div class="single-team">
+                    <div class="team-thumb">
+                        <a class="image" href="member-details.html"><img src="~/3/assets/images/team/team-1.png" alt="Team"></a>
+                    </div>
+                    <ul class="sidebar-social">
+                        <li>
+                            <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" class="twitter"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/" class="instagram"><i class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                    <div class="team-content">
+                        <h4 class="title">
+                            <a href="member-details.html">Jewel Hafiz</a>
+                        </h4>
+                        <span class="subtitle">Founder & CEO</span>
+                    </div>
+                </div>
+                <!-- Single Team Wrapper End -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-30 team-wrapper wow fadeInUp" data-wow-duration="0.8s" data-wow-delay=".1s">
+                <!-- Single Team Wrapper Start -->
+                <div class="single-team">
+                    <div class="team-thumb">
+                        <a class="image" href="member-details.html"><img src="~/3/assets/images/team/team-2.png" alt="Team"></a>
+                    </div>
+                    <ul class="sidebar-social">
+                        <li>
+                            <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" class="twitter"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/" class="instagram"><i class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                    <div class="team-content">
+                        <h4 class="title">
+                            <a href="member-details.html">Jenny Alex</a>
+                        </h4>
+                        <span class="subtitle">Founder & CEO</span>
+                    </div>
+                </div>
+                <!-- Single Team Wrapper End -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-30 team-wrapper wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
+                <!-- Single Team Wrapper Start -->
+                <div class="single-team">
+                    <div class="team-thumb">
+                        <a class="image" href="member-details.html"><img src="~/3/assets/images/team/team-3.png" alt="Team"></a>
+                    </div>
+                    <ul class="sidebar-social">
+                        <li>
+                            <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" class="twitter"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/" class="instagram"><i class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                    <div class="team-content">
+                        <h4 class="title">
+                            <a href="member-details.html">John Pretty</a>
+                        </h4>
+                        <span class="subtitle">Founder & CEO</span>
+                    </div>
+                </div>
+                <!-- Single Team Wrapper End -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-30 team-wrapper wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".1s">
+                <!-- Single Team Wrapper Start -->
+                <div class="single-team">
+                    <div class="team-thumb">
+                        <a class="image" href="member-details.html"><img src="~/3/assets/images/team/team-4.png" alt="Team"></a>
+                    </div>
+                    <ul class="sidebar-social">
+                        <li>
+                            <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" class="twitter"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/" class="instagram"><i class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                    <div class="team-content">
+                        <h4 class="title">
+                            <a href="member-details.html">Catherin Betty</a>
+                        </h4>
+                        <span class="subtitle">Founder & CEO</span>
+                    </div>
+                </div>
+                <!-- Single Team Wrapper End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team Section End -->
