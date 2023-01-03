@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.Team>
+
+<!-- Team Section Start -->
+<div class="team-section section-padding team-about-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
+                <!-- Section Title Start -->
+                <div class="section-title-center section-head text-center">
+                    <span class="subtitle">Team Members</span>
+                    <h2 class="title">Our Team Members</h2>
+                    <p class="text mx-auto mb-0">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. when the musics over turn off the light</p>
+                </div>
+                <!-- Section Title End  -->
+            </div>
+        </div>
+        <div class="row mb-n30">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-30 team-wrapper wow fadeInUp" data-wow-duration=".6s" data-wow-delay=".1s">
+                    <!-- Single Team Wrapper Start -->
+                    <div class="single-team">
+                        <div class="team-thumb">
+                           <img src="@item.Image" alt="Team">
+                        </div>
+                        <ul class="sidebar-social">
+                            <li>
+                                <a href="@item.Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="@item.Twitter" class="twitter"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="@item.Linkedl" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            </li>
+                            <li>
+                                <a href="@item.Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                        <div class="team-content">
+                            <h4 class="title">
+                                <a href="member-details.html">@item.NameSurname</a>
+                            </h4>
+                            <span class="subtitle">@item.Branch</span>
+                        </div>
+                    </div>
+                    <!-- Single Team Wrapper End -->
+                </div>
+            }
+          
+        </div>
+    </div>
+</div>
+<!-- Team Section End -->

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.DoneAllProject>
+
+<!-- Funfact Section Start -->
+<div class="funfact">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="funfact-bg funfact-bg-two">
+                    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 mb-n5">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col mb-5 wow fadeInUp" data-wow-duration=".7s" data-wow-delay=".1s">
+                                <div class="single-funfact text-start">
+                                    <div class="funfact-inner">
+                                        <span class="odometer" data-count-to="@item.CountNumber"></span>
+                                        <span class="increment">+</span>
+                                    </div>
+                                    <div class="funfact-content">
+                                        <p class="text">@item.Description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Funfact Section End -->

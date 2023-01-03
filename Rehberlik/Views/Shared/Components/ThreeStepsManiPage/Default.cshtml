@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.ThreeStepProgress>
+
+<!-- Solution Section Start -->
+<div class="solution section-padding">
+    <div class="container">
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 mb-n30">
+            @foreach (var item in Model)
+            {
+                <div class="col mb-30">
+                    <div class="solution-single wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
+                        <div class="solution-icon">
+                            <img src="@item.Image" alt="Solution-Icon">
+                        </div>
+                        <div class="solution-content">
+                            <h6 class="title">@item.Title</h6>
+                            <p class="text">@item.Description </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Solution Section End -->
