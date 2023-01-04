@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.OurService>
+@{
+    ViewData["Title"] = "Hizmetler";
+    Layout = "~/Views/_VitrinLayout.cshtml";
+}
+
+<div class="section breadcrumb-section">
+    <span class="shape shape-one layer" data-speed="1">
+        <img src="~/3/assets/images/slider/shape-2.png" alt="Shape">
+    </span>
+    <span class="shape shape-two layer" data-speed="2">
+        <img src="~/3/assets/images/slider/shape-5.png" alt="Shape">
+    </span>
+    <span class="shape shape-three wow pulse" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-7.png" alt="Shape">
+    </span>
+    <span class="shape shape-four wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-9.png" alt="Shape">
+    </span>
+    <span class="shape shape-five wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-10.png" alt="Shape">
+    </span>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 align-items-center text-center">
+                <div class="breadcrumb-wrapper">
+                    <h1 class="title">Hizmetler</h1>
+                    <p class="text mb-0">Kaliteli Hizmet Sunuyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="service-section section-padding">
+    <div class="container">
+        <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 mb-n30">
+            @foreach (var item in Model)
+            {
+                <div class="col mb-30 wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                    <div class="single-service">
+                        <div class="single-service-top">
+                            <div class="icon">
+                                <img src="@item.ImageUrl" alt="icon">
+                            </div>
+                            <h4 class="title">
+                                <a href="service-details.html">@item.Title</a>
+                            </h4>
+                        </div>
+                        <p class="single-service-text">@item.Description.Substring(15,90)</p>
+                        <a class="readmore-btn" asp-action="HizmetDetay" asp-controller="Main" asp-all-route-id=""><i class="fas fa-angle-right"></i> Detay</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

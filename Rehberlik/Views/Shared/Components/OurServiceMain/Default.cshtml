@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.OurService>
+
+
+
+
+
+<div class="service-section service-three section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 wow fadeIn" data-wow-duration=".7s" data-wow-delay=".1s">
+                <div class="section-title-center section-head text-center">
+                    <span class="subtitle">Hizmetlerimiz</span>
+                    <h2 class="title">What We Do</h2>
+                    <p class="text mx-auto">Kaliteli Hizmet Sunuyoruz.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-md-2 row-cols-1 mb-n25">
+            @foreach (var item in Model)
+            {
+                <div class="col mb-25 wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                    <div class="single-service">
+                        <div class="single-service-top">
+                            <div class="icon">
+                                <img src="@item.ImageUrl" alt="icon">
+                            </div>
+                            <h4 class="title">
+                                <a href="service-details.html">@item.Title</a>
+                            </h4>
+                        </div>
+                        <p class="single-service-text">@item.Description.Substring(5,30) </p>
+                        <a class="readmore-btn" href="service-details.html"><i class="fas fa-angle-right"></i>İncele</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

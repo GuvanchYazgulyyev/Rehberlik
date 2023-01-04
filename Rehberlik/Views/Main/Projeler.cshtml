@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.OurProject>
+@{
+    ViewData["Title"] = "Projeler";
+    Layout = "~/Views/_VitrinLayout.cshtml";
+}
+
+
+<!-- Breadcrumb Section Start -->
+<div class="section breadcrumb-section">
+    <span class="shape shape-one layer" data-speed="1">
+        <img src="~/3/assets/images/slider/shape-2.png" alt="Shape">
+    </span>
+    <span class="shape shape-two layer" data-speed="2">
+        <img src="~/3/assets/images/slider/shape-5.png" alt="Shape">
+    </span>
+    <span class="shape shape-three wow pulse" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-7.png" alt="Shape">
+    </span>
+    <span class="shape shape-four wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-9.png" alt="Shape">
+    </span>
+    <span class="shape shape-five wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-10.png" alt="Shape">
+    </span>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 align-items-center text-center">
+                <!-- Breadcrumb Wrapper Start -->
+                <div class="breadcrumb-wrapper">
+                    <h1 class="title">Projeler</h1>
+                    <p class="text mb-0">Projelerimize Gözatın.</p>
+                </div>
+                <!-- Breadcrumb Wrapper End -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="portfolio-one section-padding">
+    <div class="container">
+        <div class="portfolio-wrapper">
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 mb-n25 grid parent-gallery">
+                @foreach (var item in Model)
+                {
+                    <div class="col mb-25 grid-item cat2 cat4 wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                        <div class="single-portfolio">
+                            <a class="thumbnail" href="portfolio-details.html">
+                                <img src="@item.Image" alt="Blog Image">
+                            </a>
+                            <div class="content">
+                                <span class="subtitle">@item.Title</span>
+                                <h3 class="title">
+                                    <a href="portfolio-details.html">@item.Description.Substring(5,30)</a>
+                                </h3>
+                            </div>
+                            <div class="lightbox">
+                                <a class="item" href="@item.Image"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+

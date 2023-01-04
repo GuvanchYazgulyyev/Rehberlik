@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.CustomerComment>
+
+
+
+
+
+
+<div class="section-padding testimonial-three">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Section Title Start -->
+                <div class="section-title-center section-head text-center">
+                    <span class="subtitle">Yorumlar</span>
+                    <h2 class="title">Müşteri Memnuniyetleri</h2>
+                </div>
+                <!-- Section Title End  -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="swiper testimonialthree swiper-container-autoheight">
+                    <div class="swiper-wrapper">
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="swiper-slide wow slideInUp" data-wow-duration="1s" data-wow-delay=".1s">
+                                <!--== Start Testimonial Item ==-->
+                                <div class="testimonialthree-single">
+                                    <div class="testimonialthree-top">
+                                        <div class="testimonialthree-quote">
+                                            <img src="~/3/assets/images/quote/quote-4.png" alt="Quote">
+                                        </div>
+                                        <p class="testimonialthree-text">@item.Description </p>
+                                    </div>
+                                    <div class="testimonialthree-content">
+                                        <div class="testimonialthree-thumb">
+                                            <img src="~/3/assets/images/testimonial/testimonial-one.png" alt="Testimonial-Image">
+                                        </div>
+                                        <div class="testimonialthree-info">
+                                            <span class="name">@item.Branch </span>
+                                            <span class="designation">@item.Branch</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--== End Testimonial Item ==-->
+                            </div>
+                        }
+
+                    </div>
+                    <div class="swiper-pagination sliderone-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

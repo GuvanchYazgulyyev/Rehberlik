@@ -6,12 +6,14 @@ namespace Rehberlik.Controllers
     public class MainController : Controller
     {
         Context dr = new Context();
+        // Slider Done
         public IActionResult Index()
         {
-            return View();
+            var sliderList = dr.Sliders.Where(k => k.IsDelate == false).OrderByDescending(k => k.EntryDate).ToList();
+            return View(sliderList);
         }
 
-        // Hakkimizda 
+        // Hakkimizda  Done
         public IActionResult Hakkimizda()
         {
             var verigetir = dr.Abouts.Where(k => k.IsDelete == false).OrderByDescending(f => f.Entrydate).ToList();
@@ -19,21 +21,21 @@ namespace Rehberlik.Controllers
             return View(verigetir);
         }
 
-        // Hizmetler
+        // Hizmetler Done
         public IActionResult Hizmetler()
         {
             var verigetir = dr.OurServices.Where(k => k.IsDelate == false).ToList();
             return View(verigetir);
         }
 
-        // Yazılar (Bloklar)
+        // Yazılar (Bloklar) done
         public IActionResult Bloglar()
         {
             var verigetir = dr.Blogs.Where(k => k.IsDelate == false).ToList();
             return View(verigetir);
         }
 
-        // Takım 
+        // Takım  Done
         public IActionResult Takim()
         {
             var verigetir = dr.Teams.ToList();
@@ -56,5 +58,12 @@ namespace Rehberlik.Controllers
         //    //return View(verigetir);
         //    return View();
         //}
+        
+        // Projeler All Done
+        public IActionResult Projeler()
+        {
+            var veriListele = dr.OurProjects.Where(k => k.IsDelate == false).OrderByDescending(g => g.EntryDate).ToList();
+            return View(veriListele);
+        }
     }
 }
