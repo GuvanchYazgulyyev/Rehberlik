@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.Blog>
+@{
+    ViewData["Title"] = "BlogDetay";
+    Layout = "~/Views/_VitrinLayout.cshtml";
+}
+
+
+<!-- Breadcrumb Section Start -->
+<div class="section breadcrumb-section">
+    <span class="shape shape-one layer" data-speed="1">
+        <img src="~/3/assets/images/slider/shape-2.png" alt="Shape">
+    </span>
+    <span class="shape shape-two layer" data-speed="2">
+        <img src="~/3/assets/images/slider/shape-5.png" alt="Shape">
+    </span>
+    <span class="shape shape-three wow pulse" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-7.png" alt="Shape">
+    </span>
+    <span class="shape shape-four wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-9.png" alt="Shape">
+    </span>
+    <span class="shape shape-five wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-10.png" alt="Shape">
+    </span>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 align-items-center text-center">
+                <!-- Breadcrumb Wrapper Start -->
+                <div class="breadcrumb-wrapper">
+                    <h1 class="title">Blog Detay</h1>
+                    <p class="text mb-0">Sed do eiusmod tempor incididunt ut labore et when the musis dolore magna aliqua. </p>
+                </div>
+                <!-- Breadcrumb Wrapper End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section End -->
+<!-- Blog Section Start -->
+<div class="section-padding">
+    <div class="container">
+        <div class="row mb-n30">
+            <div class="col-lg-8 mb-30 standard-blog">
+                <!-- Single Blog Start -->
+                @foreach (var item in Model)
+                {
+                    <div class="single-blog">
+                        <!-- Blog Thumbnail Start -->
+                        <div class="single-thumb wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
+                            <img src="@item.Image" alt="Blog-Image">
+                        </div>
+                        <!-- Blog Thumbnail End -->
+                        <!-- Blog Meta Start -->
+                        <ul class="single-blog-meta wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
+                            <li>
+                                <span><i class="fas fa-user"></i></span>
+                                <a href="blog-details.html">@item.WhoWriten</a>
+                            </li>
+                            <li>
+                                <span><i class="fas fa-clock"></i></span>
+                                <p>@item.EntryDate</p>
+                            </li>
+                        </ul>
+                        <!-- Blog Meta End -->
+                        <!-- Blog Content Start -->
+                        <div class="single-blog-content wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
+                            <h2 class="title"><a href="blog-details.html">@item.Title</a> </h2>
+                            <p class="text">
+                                @item.Description
+                            </p>
+                        </div>
+                        <!-- Blog Content End -->
+                        <!-- Blog Share and Tags Section Start -->
+                        <div class="single-blog-share-tag wow fadeIn" data-wow-duration="1s" data-wow-delay=".1s">
+                            <div class="share">
+                                <span class="label">Paylaş</span>
+                                <ul class="sidebar-social d-flex flex-start">
+                                    <li>
+                                        <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/" class="twitter"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Blog Share and Tags Section End -->
+                    </div>
+                }
+                <!-- Single Blog Start -->
+            </div>
+            <div class="col-lg-4 mb-30">
+                <div class="sidebar-wrap">
+                    <!--Sidebar Post Start-->
+                    <div class="sidebar wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                        <h4 class="sidebar-title">recent post</h4>
+                        <ul class="sidebar-blog">
+
+                            @await Component.InvokeAsync("AnotherBlogs")
+
+                        </ul>
+                    </div>
+                    <!--Sidebar Post End-->
+                    <!--Sidebar Social Start-->
+                    <div class="sidebar wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                        <h4 class="sidebar-title">Bizi Takip Edin</h4>
+                        <ul class="sidebar-social d-flex flex-start">
+                            <li>
+                                <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/" class="twitter"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/" class="instagram"><i class="fab fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Sidebar Social End-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Section End -->

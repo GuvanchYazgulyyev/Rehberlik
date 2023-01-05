@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.OurService>
+
+    @foreach (var item in Model)
+{
+    <ul class="sidebar-service">
+    <li><a href="service-details.html">@item.Title</a></li>
+
+</ul>
+}

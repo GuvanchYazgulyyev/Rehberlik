@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.OurService>
+@{
+    ViewData["Title"] = "HizmetDetay";
+    Layout = "~/Views/_VitrinLayout.cshtml";
+}
+
+
+
+
+
+<!-- Breadcrumb Section Start -->
+<div class="section breadcrumb-section">
+    <span class="shape shape-one layer" data-speed="1">
+        <img src="~/3/assets/images/slider/shape-2.png" alt="Shape">
+    </span>
+    <span class="shape shape-two layer" data-speed="2">
+        <img src="~/3/assets/images/slider/shape-5.png" alt="Shape">
+    </span>
+    <span class="shape shape-three wow pulse" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-7.png" alt="Shape">
+    </span>
+    <span class="shape shape-four wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-9.png" alt="Shape">
+    </span>
+    <span class="shape shape-five wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".1s">
+        <img src="~/3/assets/images/slider/shape-10.png" alt="Shape">
+    </span>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 align-items-center text-center">
+                <!-- Breadcrumb Wrapper Start -->
+                @foreach (var item in Model)
+                {
+                    <div class="breadcrumb-wrapper">
+                        <h1 class="title">@item.Title</h1>
+                        <p class="text mb-0">Sed do eiusmod tempor incididunt ut labore et when the musis dolore magna aliqua. </p>
+                    </div>
+                }
+               
+                <!-- Breadcrumb Wrapper End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section End -->
+<!-- Service Section Start -->
+<div class="section-padding">
+    <div class="container">
+        <div class="row mb-n30">
+            <div class="col-lg-8 mb-30 standard-service">
+
+               @foreach (var item in Model)
+                {
+                    <div class="service-details">
+                        <!-- Thumbnail Start -->
+                        <div class="single-thumb wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                            <img src="@item.ImageUrl" alt="Blog-Image">
+                        </div>
+                        <!-- Thumbnail End -->
+
+                        <div class="service-desc wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                            <h3 class="service-desc-title">@item.Title</h3>
+                            <p class="text mb-4">@item.Description </p>
+                        </div>
+
+
+                    </div>
+                }
+            </div>
+            <div class="col-lg-4 mb-30">
+                <div class="sidebar-wrap">
+
+                    <!--Sidebar Service Start-->
+                    <div class="sidebar wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                        <h4 class="sidebar-title">Diğer Hizmetler</h4>
+                        @await Component.InvokeAsync("OtherServiceServicePage")
+                    </div>
+
+                    <!--Sidebar Service End-->
+                    <!--Sidebar Help Start-->
+                    <div class="sidebar sidebar-help wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+                        <h4 class="sidebar-title-two">Yardıma mı İhityacınız Var?</h4>
+                        <p class="sidebar-help-text mb-0">Pabore et dolor mod tempor inci didunt ut labore et dolore magna aliqua nim veniam strud </p>
+                        <div class="sidebar-help-call">
+                            <div class="icon"><i class="fas fa-phone"></i></div>
+                            <div class="call-area">
+                                <span class="text">Bizi Arayın</span>
+                                <a href="tel:+0123456789">+123 456 7890</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Sidebar Help End-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service Section End -->

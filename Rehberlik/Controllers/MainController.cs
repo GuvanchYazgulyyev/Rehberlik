@@ -17,7 +17,6 @@ namespace Rehberlik.Controllers
         public IActionResult Hakkimizda()
         {
             var verigetir = dr.Abouts.Where(k => k.IsDelete == false).OrderByDescending(f => f.Entrydate).ToList();
-           // var verigetir = dr.Abouts.Where(k => k.IsDelete == false).OrderByDescending(f => f.Entrydate).FirstOrDefault();
             return View(verigetir);
         }
 
@@ -27,12 +26,25 @@ namespace Rehberlik.Controllers
             var verigetir = dr.OurServices.Where(k => k.IsDelate == false).ToList();
             return View(verigetir);
         }
+        // Hizmet Detay
+        public IActionResult HizmetDetay(string serviceNo)
+        {
+            var detay = dr.OurServices.Where(k => k.ServiceNo == serviceNo).FirstOrDefault();
+            return View(detay);
+        }
 
         // Yazılar (Bloklar) done
         public IActionResult Bloglar()
         {
             var verigetir = dr.Blogs.Where(k => k.IsDelate == false).ToList();
             return View(verigetir);
+        }
+
+        // Blog Detay
+        public IActionResult BlogDetay(string serviceNo)
+        {
+            var detay = dr.Blogs.Where(k => k.ItemNo == serviceNo).FirstOrDefault();
+            return View(detay);
         }
 
         // Takım  Done
@@ -46,8 +58,6 @@ namespace Rehberlik.Controllers
        [HttpGet]
         public IActionResult MGonderMesaj()
         {
-            //var verigetir = dr.Contacts.FirstOrDefault();
-            //return View(verigetir);
             return View();
         }
 

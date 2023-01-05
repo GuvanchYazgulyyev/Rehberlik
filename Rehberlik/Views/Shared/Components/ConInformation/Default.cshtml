@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.ContactInformation>
+
+
+@foreach (var item in Model)
+{
+    <ul class="contact-info wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
+        <li>
+            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-info-content">
+                <h3 class="title">Adres</h3>
+                <span class="text">@item.Address</span>
+            </div>
+        </li>
+        <li>
+            <div class="icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="contact-info-content">
+                <h3 class="title">Telefon</h3>
+                <span class="text"><a href="tel:@item.Tel">@item.Tel</a></span>
+            </div>
+        </li>
+        <li>
+            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-info-content">
+                <h3 class="title">E Posta</h3>
+                <span class="text"><a href="mailto:@item.Email">@item.Email</a></span>
+            </div>
+        </li>
+    </ul>
+}
