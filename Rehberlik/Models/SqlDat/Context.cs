@@ -23,5 +23,6 @@ namespace Rehberlik.Models.SqlDat
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<ThreeStepProgress> ThreeSteps { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }

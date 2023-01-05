@@ -1,0 +1,95 @@
+﻿@model Rehberlik.Models.SqlDat.Blog
+
+@{
+    ViewData["Title"] = "AllBlogUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!doctype html>
+<html class="no-js " lang="tr">
+
+<body class="theme-blue">
+    <!-- Main Content -->
+    <section class="content">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <h2>
+                        Bloglar
+                        <small class="text-muted">Tekrar Hoş Geldiniz</small>
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="body">
+
+                            <h4>Blog Güncelle</h4>
+
+                            <form asp-action="AllBlogUpdate" class="form-group" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Id" />
+                                <div class="form-group">
+                                    <label asp-for="Title" class="control-label"></label>
+                                    <input asp-for="Title" class="form-control" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label"></label>
+                                    <textarea rows="7" asp-for="Description" class="form-control" id="summernote" placeholder="İçerik"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Image" class="control-label"></label>
+                                    <input asp-for="Image" type="file" accept=".jpg,.JPG,.PNG,.png,.jpeg,.JPEG" name="userPicture" placeholder="Görsel" class="form-control" />
+                                    <span asp-validation-for="Image" class="text-danger"></span>
+                                </div>
+
+
+
+
+                                <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                                <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+                                <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
+                                <script>
+                                    $('#summernote').summernote({
+                                        placeholder: 'Özel Notunuzu Buraya Giriniz! Örnk:"Daha Fazla Özellik"',
+                                        tabsize: 2,
+                                        height: 140,
+                                        toolbar: [
+                                            ['style', ['style']],
+                                            ['font', ['bold', 'underline', 'clear']],
+                                            ['color', ['color']],
+                                            ['para', ['ul', 'ol', 'paragraph']],
+                                            ['table', ['table']],
+                                            ['insert', ['link', 'picture', 'video']],
+                                            ['view', ['fullscreen', 'codeview', 'help']]
+                                        ]
+                                    });
+                                </script>
+
+
+
+                                <div class="form-group">
+                                    <button class="btn btn-raised bg-indigo btn-round">Değişiklikleri Kaydet</button>>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <a asp-action="BlogList" class="btn btn-outline-info">Geri Dön</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
