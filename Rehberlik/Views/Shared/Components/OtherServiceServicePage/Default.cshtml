@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Rehberlik.Models.SqlDat.OurService>
 
-    @foreach (var item in Model)
+@foreach (var item in Model)
 {
     <ul class="sidebar-service">
-    <li><a href="service-details.html">@item.Title</a></li>
+        <li><a asp-action="HizmetDetay" asp-controller="Main" asp-route-id="@item.ServiceNo">@item.Title</a></li>
 
-</ul>
+    </ul>
 }

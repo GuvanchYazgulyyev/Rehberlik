@@ -1,0 +1,68 @@
+﻿@model Rehberlik.Models.SqlDat.ContactInformation
+@{
+    ViewData["Title"] = "ContactInformUpdate";
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+<!doctype html>
+<html class="no-js " lang="tr">
+
+<body class="theme-blue">
+    <!-- Main Content -->
+    <section class="content">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <h2>
+                        İletişim Bilgileri
+                        <small class="text-muted">Tekrar Hoş Geldiniz</small>
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="body">
+                            <h4> İletişim Bilgileri Güncelle</h4>
+                            <form asp-action="ContactInformUpdate" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Id" />
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label"></label>
+                                    <input asp-for="Address" class="form-control" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Tel" class="control-label"></label>
+                                    <input asp-for="Tel" class="form-control" />
+                                    <span asp-validation-for="Tel" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Map" class="control-label"></label>
+                                    <input asp-for="Map" class="form-control" />
+                                    <span asp-validation-for="Map" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-raised bg-indigo btn-round">Değişiklikleri Kaydet</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a asp-action="ContacInformtList" class="btn btn-info">Geri Dön</a>
+        </div>
+    </section>
+
+</body>
+</html>
+

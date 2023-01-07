@@ -10,5 +10,9 @@ namespace Rehberlik.Models.SqlDat
         public string Tel { get; set; }
         public string Email { get; set; }
         public string Map { get; set; }
+        public string Face { get; set; }
+        public string Twit { get; set; }
+        public string Linkd { get; set; }
+        public string Ins { get; set; }
     }
 }

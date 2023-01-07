@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.Blog>
+
+
+
+
+@foreach (var item in Model)
+{
+    <li>
+        <a href="~/Main/BlogDetay/@item.ItemNo" class="image"><img src="~/Picture/@item.Image" alt="Blog Post"></a>
+        <div class="content">
+            <span class="subtitle">@item.Title</span>
+            <a class="title" href="~/Main/BlogDetay/@item.ItemNo">@item.Description.Substring(5,25) ...</a>
+            <span class="date">@item.EntryDate</span>
+        </div>
+    </li>
+}
+
+

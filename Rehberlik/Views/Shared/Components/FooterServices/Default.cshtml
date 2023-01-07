@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.OurService>
+
+
+@foreach (var item in Model)
+{
+    <li><a href="~/Main/HizmetDetay/@item.ServiceNo">@item.Title</a></li>
+}

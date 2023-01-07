@@ -6,10 +6,10 @@
 @foreach (var item in Model)
 {
     <li>
-        <a href="blog-details.html" class="image"><img src="@item.Image" alt="Blog Post"></a>
+        <a href="blog-details.html" class="image"><img src="~/Picture/@item.Image" alt="Blog Post"></a>
         <div class="content">
             <span class="subtitle">Web Design</span>
-            <a class="title" href="blog-details.html">@item.Title</a>
+            <a class="title"  href="~/Main/BlogDetay/@item.ItemNo">@item.Title</a>
             <span class="date">@item.EntryDate</span>
         </div>
     </li>

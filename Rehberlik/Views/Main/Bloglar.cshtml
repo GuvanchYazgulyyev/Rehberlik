@@ -47,8 +47,8 @@
                     <!-- Single Blog Start -->
                     <div class="blog wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
                         <div class="blog-thumbnail">
-                            <a href="blog-details.html" class="image">
-                                <img src="@item.Image" alt="Blog Image">
+                            <a href="~/Main/BlogDetay/@item.ItemNo" class="image">
+                                <img src="~/Picture/@item.Image" alt="Blog Image">
                             </a>
                         </div>
                         <div class="blog-info">
@@ -57,29 +57,13 @@
                                 <li>@item.EntryDate</li>
                             </ul>
                             <h3 class="title">
-                                <a href="blog-details.html">@item.Description.Substring(8,50)</a>
+                                <a href="~/Main/BlogDetay/@item.ItemNo">@item.Description.Substring(8,50)</a>
                             </h3>
                         </div>
                     </div>
                     <!-- Single Blog End -->
                 </div>
             }
-        </div>
-        <div class="row">
-            <div class="col-12 justify-content-center align-items-center d-flex">
-                <nav class="pagination-wrapper wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link active" href="#/">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#/">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#/">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#/" aria-label="Next">
-                                <span aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
         </div>
     </div>
 </div>

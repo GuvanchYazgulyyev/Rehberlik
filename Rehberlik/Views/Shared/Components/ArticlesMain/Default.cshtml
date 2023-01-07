@@ -12,8 +12,7 @@
                 <div class="section-head wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.1s; animation-name: fadeIn;">
                     <span class="subtitle">Makaleler</span>
                     <h2 class="title">Güncel Habeleri Takip Edin</h2>
-                    <p class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="blog.html" class="btn btn-style-three"> <span>Tümünü Oku</span> </a>
+                    <a href="~/Main/Bloglar" class="btn btn-style-three"> <span>Tümünü Oku</span> </a>
                 </div>
             </div>
             <div class="col-lg-7 mb-50">
@@ -23,7 +22,7 @@
                         <div class="blog-three-single">
                             <div class="blog-three-image">
                                 <a href="blog-details.html">
-                                    <img src="@item.Image" alt="Blog">
+                                    <img src="~/Picture/@item.Image" alt="Blog">
                                 </a>
                             </div>
                             <div class="blog-three-content">
@@ -37,7 +36,7 @@
                                     </h3>
                                     <p class="text">@item.Description.Substring(50,100) ...</p>
 
-                                    <a href="blog-details.html" class="read-more"><i class="fas fa-angle-right"></i>Read More</a>
+                                    <a href="~/Main/BlogDetay/@item.ItemNo" class="read-more"><i class="fas fa-angle-right"></i>Detay</a>
                                 </div>
                             </div>
                         </div>

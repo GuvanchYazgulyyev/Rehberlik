@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rehberlik.Models.SqlDat;
+using System.Xml.Linq;
 
 namespace Rehberlik.Controllers
 {
@@ -16,6 +18,25 @@ namespace Rehberlik.Controllers
         }
         public IActionResult Index()
         {
+            var AdSoyad = User.Identity.Name;
+            // Ad
+            var ad = dr.Admins.Where(k => k.EMail == AdSoyad && k.IsDelete == false).Select(f => f.NameSurname).FirstOrDefault();
+            ViewBag.ad = ad;
+            // Hizmetler
+            var hizmetler = dr.OurServices.Where(k => k.IsDelate == false).Count();
+            ViewBag.hizmetler = hizmetler;
+
+            //Makale
+            var makale = dr.Blogs.Where(f => f.IsDelate == false).Count();
+            ViewBag.makale = makale;
+
+            //  Takım
+            var takim = dr.Teams.Count();
+            ViewBag.takim = takim;
+
+            // Gelen Mesaj
+            var mesajlar = dr.Contacts.Where(k => k.IsDelete == false).Count();
+            ViewBag.mesajlar = mesajlar;
             return View();
         }
 
@@ -132,5 +153,323 @@ namespace Rehberlik.Controllers
             return RedirectToAction("BlogList");
         }
         #endregion
+
+
+
+        #region About Us
+        // About Us
+        public async Task<IActionResult> AboutUsList()
+        {
+            var returnValue = dr.Abouts.ToList();
+            return View(returnValue);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> AboutUsUpdate(int id)
+        {
+            var getList = dr.Abouts.Find(id);
+            return View(getList);
+        }
+
+        // Get Update
+        [HttpPost]
+        public async Task<IActionResult> AboutUsUpdate(About hakkimizdum, IFormFile userPicture)
+        {
+
+            var returnDetail = dr.Abouts.Find(hakkimizdum.Id);
+
+            // Resim Kaydetme----------------------------------------------
+            if (userPicture.Length > 0)
+            {
+                // Resim Yolunu buluyor
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(userPicture.FileName);
+                // Veri tabanı yolunu buluyor
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Picture/", fileName);
+                // Kaydetmek için
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    userPicture.CopyToAsync(stream);
+                    returnDetail.Image = fileName;
+                }
+            }
+
+            if (hakkimizdum.Image != null)
+            {
+                returnDetail.Image = hakkimizdum.Image;
+            }
+
+            returnDetail.Title = hakkimizdum.Title;
+            returnDetail.Description = hakkimizdum.Description;
+            returnDetail.LoverTitle = hakkimizdum.LoverTitle;
+            returnDetail.IsDelete = false;
+            dr.SaveChanges();
+            return RedirectToAction("AboutUsList");
+        }
+
+        #endregion
+
+
+
+        #region Contact Information
+
+        // Contact Information
+        public async Task<IActionResult> ContacInformtList()
+        {
+            var returnValue = dr.ContactInformation.ToList();
+            return View(returnValue);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> ContactInformUpdate(int id)
+        {
+            var getList = dr.ContactInformation.Find(id);
+            return View(getList);
+        }
+
+        // Get Update
+        [HttpPost]
+        public async Task<IActionResult> ContactInformUpdate(ContactInformation trContact)
+        {
+
+            var returnDetail = dr.ContactInformation.Find(trContact.Id);
+
+            returnDetail.Address = trContact.Address;
+            returnDetail.Tel = trContact.Tel;
+            returnDetail.Email = trContact.Email;
+            returnDetail.Map = trContact.Map;
+            dr.SaveChanges();
+            return RedirectToAction("ContacInformtList");
+        }
+
+        #endregion
+
+
+
+        #region Customer Comments
+        // List Custom Comments
+        public async Task<IActionResult> CustomCommentsList()
+        {
+            var returnValue = dr.CustomerComments.Where(k => k.IsDalete == false).OrderByDescending(k => k.EntryDate).ToList();
+            return View(returnValue);
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> CustomCommentsListAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CustomCommentsListAdd(CustomerComment trComment, IFormFile userPicture)
+        {
+            if (ModelState.IsValid)
+            {
+                // Resim Kaydetme----------------------------------------------
+                if (userPicture.Length > 0)
+                {
+                    // Resim Yolunu buluyor
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(userPicture.FileName);
+                    // Veri tabanı yolunu buluyor
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Picture/", fileName);
+                    // Kaydetmek için
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        userPicture.CopyToAsync(stream);
+                        trComment.Image = fileName;
+                    }
+                }
+                trComment.IsDalete = false;
+                trComment.EntryDate = DateTime.Now;
+                dr.CustomerComments.Add(trComment);
+                dr.SaveChanges();
+                return RedirectToAction("CustomCommentsList");
+            }
+            return View();
+
+        }
+        // Delete
+
+        public async Task<IActionResult> DeleteCustomCommentsList(int id)
+        {
+            var findID = dr.CustomerComments.Find(id);
+            findID.IsDalete = true;
+            dr.SaveChanges();
+            return RedirectToAction("CustomCommentsList");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CustomCommentsListUpdate(int id)
+        {
+            var getList = dr.CustomerComments.Find(id);
+            return View(getList);
+        }
+
+        // Get Update
+        [HttpPost]
+        public async Task<IActionResult> CustomCommentsListUpdate(CustomerComment trBlog, IFormFile userPicture)
+        {
+
+            var returnDetail = dr.CustomerComments.Find(trBlog.Id);
+            // Resim Kaydetme----------------------------------------------
+            if (userPicture.Length > 0 || userPicture != null)
+            {
+                // Resim Yolunu buluyor
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(userPicture.FileName);
+                // Veri tabanı yolunu buluyor
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Picture/", fileName);
+                // Kaydetmek için
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    userPicture.CopyToAsync(stream);
+                    returnDetail.Image = fileName;
+                }
+            }
+            if (trBlog.Image != null)
+            {
+                returnDetail.Image = trBlog.Image;
+            }
+            dr.CustomerComments = dr.CustomerComments;
+            returnDetail.Branch = trBlog.Branch;
+            returnDetail.Description = trBlog.Description;
+            returnDetail.NameSurname = trBlog.NameSurname;
+
+            returnDetail.IsDalete = false;
+            dr.SaveChanges();
+            return RedirectToAction("CustomCommentsList");
+        }
+
+        #endregion
+
+
+
+
+        #region InComing Message
+        // List Gelen Mesaj
+
+        public async Task<IActionResult> IncomingCustomerMessage()
+        {
+            var result = dr.Contacts.ToList();
+            return View(result);
+        }
+
+        // DElete Message
+        public async Task<IActionResult> DeleteMeesageList(int id)
+        {
+            var findId = dr.Contacts.Find(id);
+            findId.IsDelete = true;
+            dr.SaveChanges();
+            return RedirectToAction("IncomingCustomerMessage");
+        }
+
+        #endregion
+
+
+
+
+
+
+
+
+        #region Admin Information
+
+        public async Task<IActionResult> AdmistrationList()
+        {
+            var inform = dr.Admins.Where(k => k.IsDelete == false).ToList();
+            return View(inform);
+        }
+
+
+        // All City Add
+        [HttpGet]
+        public async Task<IActionResult> AdmistrationAdd()
+        {
+            Random rnd = new Random();
+            string[] karakterler = { "A", "B", "C", "D", "E", "F", "G", "H", "V", "Q", "W", "Z" };
+            int k1, k2, k3;
+            k1 = rnd.Next(0, karakterler.Length);
+            k2 = rnd.Next(0, karakterler.Length);
+            k3 = rnd.Next(0, karakterler.Length);
+            int s1, s2, s3;
+            s1 = rnd.Next(100, 1000);
+            s2 = rnd.Next(10, 99);
+            s3 = rnd.Next(10, 99);
+            string kod = s1.ToString() + karakterler[k1] + s2 + karakterler[k2] + s3 + karakterler[k3];
+            ViewBag.takipkod = kod;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AdmistrationAdd(Admin allCity)
+        {
+            if (ModelState.IsValid)
+            {
+                allCity.IsDelete = false;
+                allCity.EntryDate = DateTime.Now;
+                dr.Admins.Add(allCity);
+                dr.SaveChanges();
+                return RedirectToAction("AdmistrationList");
+            }
+            return View();
+
+        }
+        // Delete
+
+        public async Task<IActionResult> AdmistrationDelete(int id)
+        {
+            var findID = dr.Admins.Find(id);
+            findID.IsDelete = true;
+            dr.SaveChanges();
+            return RedirectToAction("AdmistrationList");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AdmistrationUpdate(int id)
+        {
+            var getList = dr.Admins.Find(id);
+            return View(getList);
+        }
+
+        // Get Update
+        [HttpPost]
+        public async Task<IActionResult> AdmistrationUpdate(Admin trAllCity)
+        {
+            if (ModelState.IsValid)
+            {
+                var returnDetail = dr.Admins.Find(trAllCity.Id);
+                returnDetail.NameSurname = trAllCity.NameSurname;
+                returnDetail.EMail = trAllCity.EMail;
+                returnDetail.Tel = trAllCity.Tel;
+                returnDetail.Password = trAllCity.Password;
+                returnDetail.IsDelete = false;
+                dr.SaveChanges();
+                return RedirectToAction("AdmistrationList");
+            }
+            return View();
+
+        }
+
+
+        #endregion
+
+
+
+
+        #region Çıkış Yap
+        ///----------------------------------------------------------------- Çıkış (Log Out)
+        ///
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Main");
+        }
+
+
+        #endregion
+
     }
 }

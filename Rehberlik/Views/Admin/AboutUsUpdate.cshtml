@@ -1,10 +1,8 @@
-﻿@model Rehberlik.Models.SqlDat.Blog
-
+﻿@model Rehberlik.Models.SqlDat.About
 @{
-    ViewData["Title"] = "AllBlogUpdate";
+    ViewData["Title"] = "AboutUsUpdate";
     Layout = "~/Views/_AdminLayout.cshtml";
 }
-
 
 <!doctype html>
 <html class="no-js " lang="tr">
@@ -16,7 +14,7 @@
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
                     <h2>
-                        Bloglar
+                        Hakkımızda Bilgileri Düzenle
                         <small class="text-muted">Tekrar Hoş Geldiniz</small>
                     </h2>
                 </div>
@@ -28,28 +26,30 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="body">
-
-                            <h4>Blog Güncelle</h4>
-
-                            <form asp-action="AllBlogUpdate" class="form-group" method="post" enctype="multipart/form-data">
+                            <h4>Hakkımızda Bilgileri Düzenle</h4>
+                            <form asp-action="AboutUsUpdate" method="post" enctype="multipart/form-data" class="form-group">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <input type="hidden" asp-for="Id" />
                                 <div class="form-group">
-                                    <label asp-for="Title" class="control-label"></label>
+                                    <label class="control-label">Başlık</label>
                                     <input asp-for="Title" class="form-control" />
                                     <span asp-validation-for="Title" class="text-danger"></span>
                                 </div>
-                                <div class="form-group">
-                                    <label asp-for="Description" class="control-label"></label>
-                                    <textarea rows="7" asp-for="Description" class="form-control" id="summernote" placeholder="İçerik"></textarea>
-                                    <span asp-validation-for="Description" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Image" class="control-label"></label>
+                                 <div class="form-group">
+                                   <label asp-for="Image" class="control-label"></label>
                                     <input asp-for="Image" type="file" accept=".jpg,.JPG,.PNG,.png,.jpeg,.JPEG" name="userPicture" placeholder="Görsel" class="form-control" />
                                     <span asp-validation-for="Image" class="text-danger"></span>
                                 </div>
-
+                                <div class="form-group">
+                                    <label class="control-label">Alt Açıklama</label>
+                                    <textarea rows="6" asp-for="LoverTitle" class="form-control" name="Description" placeholder="İçerik"></textarea>
+                                    <span asp-validation-for="LoverTitle" class="text-danger"></span>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="control-label"> Açıklama</label>
+                                    <textarea rows="6" asp-for="Description" class="form-control" name="Description" id="summernote" placeholder="İçerik"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
 
 
 
@@ -74,19 +74,15 @@
                                         ]
                                     });
                                 </script>
-
-
-
                                 <div class="form-group">
-                                    <button class="btn btn-raised bg-indigo btn-round">Değişiklikleri Kaydet</button>>
+                                    <button class="btn btn-raised bg-indigo btn-round">Değişiklikleri Kaydet</button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
-                    <a asp-action="BlogList" class="btn btn-outline-info">Geri Dön</a>
                 </div>
             </div>
+            <a asp-action="class=" form-group"" class="btn btn-info">Geri Dön</a>
         </div>
     </section>
 

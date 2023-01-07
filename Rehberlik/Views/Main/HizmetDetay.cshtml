@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Rehberlik.Models.SqlDat.OurService>
+﻿@model Rehberlik.Models.SqlDat.OurService
 @{
     ViewData["Title"] = "HizmetDetay";
     Layout = "~/Views/_VitrinLayout.cshtml";
@@ -29,13 +29,11 @@
         <div class="row">
             <div class="col-12 align-items-center text-center">
                 <!-- Breadcrumb Wrapper Start -->
-                @foreach (var item in Model)
-                {
+      
                     <div class="breadcrumb-wrapper">
-                        <h1 class="title">@item.Title</h1>
-                        <p class="text mb-0">Sed do eiusmod tempor incididunt ut labore et when the musis dolore magna aliqua. </p>
+                        <h1 class="title">@Model.Title</h1>
                     </div>
-                }
+            
                
                 <!-- Breadcrumb Wrapper End -->
             </div>
@@ -49,23 +47,21 @@
         <div class="row mb-n30">
             <div class="col-lg-8 mb-30 standard-service">
 
-               @foreach (var item in Model)
-                {
                     <div class="service-details">
                         <!-- Thumbnail Start -->
                         <div class="single-thumb wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
-                            <img src="@item.ImageUrl" alt="Blog-Image">
+                            <img src="~/Picture/@Model.ImageUrl" alt="Blog-Image">
                         </div>
                         <!-- Thumbnail End -->
 
                         <div class="service-desc wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
-                            <h3 class="service-desc-title">@item.Title</h3>
-                            <p class="text mb-4">@item.Description </p>
+                            <h3 class="service-desc-title">@Model.Title</h3>
+                            <p class="text mb-4">@Model.Description </p>
                         </div>
 
 
                     </div>
-                }
+
             </div>
             <div class="col-lg-4 mb-30">
                 <div class="sidebar-wrap">
@@ -80,7 +76,7 @@
                     <!--Sidebar Help Start-->
                     <div class="sidebar sidebar-help wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
                         <h4 class="sidebar-title-two">Yardıma mı İhityacınız Var?</h4>
-                        <p class="sidebar-help-text mb-0">Pabore et dolor mod tempor inci didunt ut labore et dolore magna aliqua nim veniam strud </p>
+                        <p class="sidebar-help-text mb-0">Bizimle İletişime Geçmekten Çekinmeyin </p>
                         <div class="sidebar-help-call">
                             <div class="icon"><i class="fas fa-phone"></i></div>
                             <div class="call-area">

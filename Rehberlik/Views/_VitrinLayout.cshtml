@@ -34,7 +34,7 @@
                         <div class="flex-center justify-content-between">
                             <!-- Header Logo Start -->
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="~/3/assets/images/logo.png" alt="">
                                 </a>
                             </div>
@@ -103,7 +103,7 @@
         <div class="offcanvas-header">
             <!-- Header Logo Start -->
             <div class="logo">
-                <a href="index.html">
+                <a href="/">
                     <img src="~/3/assets/images/logo.png" alt="">
                 </a>
             </div>
@@ -145,45 +145,15 @@
             <div class="row mb-n30">
 
                 <!-- Footer Widget Start -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-30 wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
-                    <div class="footer-widget negative-margin">
-                        <div class="logo">
-                            <a href="index.html">
-                                <img src="~/3/assets/images/logowhite.png" alt="">
-                            </a>
-                        </div>
-                        <ul class="footer-widget-list-icon">
-                            <li><i class="fas fa-map-marker-alt"></i> <span> 20 Bordeshi, Amin Bazar <br> Savar, Dhaka 1348</span></li>
-                            <li><i class="fas fa-envelope"></i> <span>hello@egens.com</span> </li>
-                            <li><i class="fas fa-phone"></i><span>+123 456 7890</span> </li>
-                        </ul>
-                        <ul class="social-icon d-flex flex-start">
-                            <li>
-                                <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/" class="twitter"><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" class="instagram"><i class="fab fa-instagram"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                @await Component.InvokeAsync("FooterContactInform")
                 <!-- Footer Widget End -->
                 <!-- Footer Widget Start -->
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-30 d-flex justify-content-lg-center justify-content-sm-end wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
                     <div class="footer-widget">
-                        <h5 class="footer-widget-title">Service</h5>
+                        <h5 class="footer-widget-title">Hizmetler</h5>
                         <ul class="footer-widget-list">
-                            <li><a href="about.html">Web Design</a></li>
-                            <li><a href="about.html">Development</a></li>
-                            <li><a href="about.html">Digital Marketing</a></li>
-                            <li><a href="about.html">Graphic Design</a></li>
-                            <li><a href="about.html">Photogaphy</a></li>
+                            @await Component.InvokeAsync("FooterServices")
+
                         </ul>
                     </div>
                 </div>
@@ -204,36 +174,13 @@
                 <!-- Footer Widget Start -->
                 <div class="col-lg-3 col-md-6 col-sm-7 col-12 mb-30 d-flex justify-content-sm-end wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
                     <div class="footer-widget">
-                        <h5 class="footer-widget-title">Recent Posts</h5>
+                        <h5 class="footer-widget-title">Yeni Haberler</h5>
                         <ul class="sidebar-blog">
-                            <li>
-                                <a href="blog-details.html" class="image"><img src="~/3/assets/images/blog/blog-post-4.png" alt="Blog Post"></a>
-                                <div class="content">
-                                    <span class="subtitle">Web Design</span>
-                                    <a class="title" href="blog-details.html">When the musics over turn off the light</a>
-                                    <span class="date">25 Feb 2022</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="blog-details.html" class="image"><img src="~/3/assets/images/blog/blog-post-5.png" alt="Blog Post"></a>
-                                <div class="content">
-                                    <span class="subtitle">Web Design</span>
-                                    <a class="title" href="blog-details.html">Niche Blogs for Rising Metal Bands</a>
-                                    <span class="date">24 Jun 2022</span>
-                                </div>
-                            </li>
+                            @await Component.InvokeAsync("FooterNewArticl")                      
                         </ul>
                     </div>
                 </div>
                 <!-- Footer Widget End -->
-
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="copyright wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".1s">
-                        <p class="order-md-1 order-2">Designed with love by <span>Jewel Khan</span> © 2022</p>
-                    </div>
-                </div>
             </div>
         </div>
     </footer>

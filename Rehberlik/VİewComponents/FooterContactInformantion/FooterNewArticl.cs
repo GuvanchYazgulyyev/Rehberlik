@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Rehberlik.Models.SqlDat;
 
-namespace Rehberlik.VİewComponents.ServicePage
+namespace Rehberlik.VİewComponents.FooterContactInformantion
 {
-    public class OtherServiceServicePage:ViewComponent
+    public class FooterNewArticl:ViewComponent
     {
         Context dr = new Context();
         public IViewComponentResult Invoke()
         {
-            var result = dr.OurServices.Where(x => x.IsDelate == false).OrderByDescending(k => k.Id).ToList();
+            var result = dr.Blogs.OrderByDescending(k => k.Id).Take(2).ToList();
             return View(result);
         }
     }

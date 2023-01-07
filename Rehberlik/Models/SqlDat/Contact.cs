@@ -11,5 +11,7 @@ namespace Rehberlik.Models.SqlDat
         public string Email { get; set; }
         public string Tel { get; set; }
         public string Message { get; set; }
+        public DateTime EntryDate { get; set; }
+        public bool IsDelete { get; set; }
     }
 }

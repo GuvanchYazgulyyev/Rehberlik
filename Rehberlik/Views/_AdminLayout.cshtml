@@ -69,9 +69,6 @@
                     <div class="user-info">
                         <div class="image"><a href="#"><img src="~/KProfil/assets/images/profile_av.jpg" alt="User"></a></div>
                         <div class="detail">
-
-                            <h4>@TempData["adsoyad"]</h4>
-
                         </div>
 
                         <a href="/Admin/Logout" title="Çıkış Yap"><i class="zmdi zmdi-power"></i></a>
@@ -92,31 +89,6 @@
                     <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-looks"></i><span>Yetkili Kullanıcılar</span> </a>
                     <ul class="ml-menu">
                         <li><a href="/Admin/AdmistrationList/">(Yetkili) Kullanıcılar</a></li>
-                        <li><a asp-action="GetListDelegate" asp-controller="Admin"> Temsilciler</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-comment-alt-text"></i><span>Emlak Kategoprileri</span> </a>
-                    <ul class="ml-menu">
-
-                        <li>
-                            <a asp-action="PropertyTypeList" asp-controller="Admin">
-                                Emlak Tipi
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="CityList" asp-controller="Admin">
-                                Şehirler
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="PropertyStatusList" asp-controller="Admin">
-                                İlan Durumu
-                            </a>
-                        </li>
-
-
                     </ul>
                 </li>
 
@@ -141,18 +113,8 @@
                             </a>
                         </li>
                         <li>
-                            <a asp-action="PrivacyPolicyList" asp-controller="Admin">
-                                Gizlilik Politikası
-                            </a>
-                        </li>
-                        <li>
                             <a asp-action="WhyUsList" asp-controller="Admin">
                                 Neden Bizi Seçmelisiniz!
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="ReferanceList" asp-controller="Admin">
-                                Referanslar
                             </a>
                         </li>
 

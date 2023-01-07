@@ -24,9 +24,9 @@ namespace Rehberlik.Controllers
         [HttpPost]
         public async Task<IActionResult> OrganiztionLogin(Admin administration)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
 
-            {
+            //{
                 var datavalue = dr.Admins.FirstOrDefault(k => k.EMail == administration.EMail && k.Password == administration.Password);
                 if (datavalue != null)
                 {
@@ -44,8 +44,8 @@ namespace Rehberlik.Controllers
                     TempData["mesaj"] = "Hatalı giriş!!!";
                     return View();
                 }
-            }
-            TempData["mesaj"] = "Bu Hesap Kayutlı Değil!!!";
+            //}
+            //TempData["mesaj"] = "Bu Hesap Kayutlı Değil!!!";
             return View();
         }
 

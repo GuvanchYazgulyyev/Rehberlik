@@ -10,7 +10,7 @@
             <div class="col-12 wow fadeIn" data-wow-duration=".7s" data-wow-delay=".1s">
                 <div class="section-title-center section-head text-center">
                     <span class="subtitle">Hizmetlerimiz</span>
-                    <h2 class="title">What We Do</h2>
+                    <h2 class="title">Ne Yapıyoruz</h2>
                     <p class="text mx-auto">Kaliteli Hizmet Sunuyoruz.</p>
                 </div>
             </div>
@@ -22,14 +22,14 @@
                     <div class="single-service">
                         <div class="single-service-top">
                             <div class="icon">
-                                <img src="@item.ImageUrl" alt="icon">
+                                <img src="~/Picture/@item.ImageUrl" width="90px" alt="icon">
                             </div>
                             <h4 class="title">
-                                <a href="service-details.html">@item.Title</a>
+                                <a href="~/Main/HizmetDetay/@item.ServiceNo">@item.Title</a>
                             </h4>
                         </div>
                         <p class="single-service-text">@item.Description.Substring(5,30) </p>
-                        <a class="readmore-btn" href="service-details.html"><i class="fas fa-angle-right"></i>İncele</a>
+                        <a class="readmore-btn" href="~/Main/HizmetDetay/@item.ServiceNo"><i class="fas fa-angle-right"></i>İncele</a>
                     </div>
                 </div>
             }

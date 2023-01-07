@@ -46,11 +46,11 @@
                                 <img src="@item.ImageUrl" alt="icon">
                             </div>
                             <h4 class="title">
-                                <a href="service-details.html">@item.Title</a>
+                                <a href="~/Main/HizmetDetay/@item.ServiceNo">@item.Title</a>
                             </h4>
                         </div>
                         <p class="single-service-text">@item.Description.Substring(15,90)</p>
-                        <a class="readmore-btn" asp-action="HizmetDetay" asp-controller="Main" asp-all-route-id=""><i class="fas fa-angle-right"></i> Detay</a>
+                        <a class="readmore-btn" href="~/Main/HizmetDetay/@item.ServiceNo"><i class="fas fa-angle-right"></i> Detay</a>
                     </div>
                 </div>
             }
