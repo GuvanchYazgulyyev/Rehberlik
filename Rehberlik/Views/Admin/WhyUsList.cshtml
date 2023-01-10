@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Rehberlik.Models.SqlDat.ThreeStepProgress>
+@{
+    ViewData["Title"] = "WhyUsList";
+    Layout = "~/Views/_AdminLayout.cshtml";
+}
+
+
+<!doctype html>
+<html class="no-js " lang="tr">
+
+<body class="theme-blue">
+    <!-- Main Content -->
+    <section class="content">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <h2>
+                        Neden Biz 3 Adım
+                        <small class="text-muted">Tekrar Hoş Geldiniz</small>
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="body">
+                            <h4>  Neden Biz</h4>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>
+                                        Başlık
+                                    </th>
+                                    <th>
+                                        Açıklama
+                                    </th>
+                                    <th>
+                                        Resim
+                                    </th>
+                                    <th>
+                                        Kayıt Tarihi
+                                    </th>
+                                    <th>Sil</th>
+                                    <th>Güncelle</th>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+                                        <td>
+                                            @Html.Raw(item.Description)
+                                        </td>
+                                        <td>
+                                            <img src="~/Picture/@Html.DisplayFor(modelItem => item.Image)" width="120px;" alt="">
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EntryDate)
+                                        </td>
+                                        <td><a asp-action="DeleteWhyUs" asp-route-id="@item.Id" onclick="return confirm('Bunu Silmek İstediginizden Emin misin? @item.Title ')" class="btn btn-raised btn-warning btn-round"> Sil </a></td>
+                                        <td>
+                                            <a asp-action="WhyUsUpdate" asp-route-id="@item.Id" class="btn btn-raised btn-info btn-round">Düzenle</a>
+
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                            <a asp-action="WhyUsAdd" class="btn btn-raised btn-success btn-simple btn-round">Yeni Ekle</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+

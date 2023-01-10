@@ -369,6 +369,217 @@ namespace Rehberlik.Controllers
 
 
 
+        #region Hizmetler
+
+        // List Blog
+        public async Task<IActionResult> ServiceList()
+        {
+            var returnValue = dr.OurServices.Where(k => k.IsDelate == false).OrderByDescending(k => k.EntryDate).ToList();
+            return View(returnValue);
+        }
+
+
+        // All Blog Add
+        [HttpGet]
+        public async Task<IActionResult> ServiceAdd()
+        {
+            var mail = User.Identity.Name;
+
+            var soyad = dr.Admins.Where(k => k.EMail == mail).Select(f => f.NameSurname).FirstOrDefault();
+            ViewBag.soyad = soyad;
+            Random rnd = new Random();
+            string[] karakterler = { "A", "B", "C", "D", "E", "F", "G", "H", "V", "Q", "W", "Z" };
+            int k1, k2, k3;
+            k1 = rnd.Next(0, karakterler.Length);
+            k2 = rnd.Next(0, karakterler.Length);
+            k3 = rnd.Next(0, karakterler.Length);
+            int s1, s2, s3;
+            s1 = rnd.Next(100, 1000);
+            s2 = rnd.Next(10, 99);
+            s3 = rnd.Next(10, 99);
+            string kod = s1.ToString() + karakterler[k1] + s2 + karakterler[k2] + s3 + karakterler[k3];
+            ViewBag.takipkod = kod;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ServiceAdd(OurService trBlog, IFormFile userPicture, IFormFile ab)
+        {
+            //if (ModelState.IsValid)
+            //{
+            // Resim Kaydetme----------------------------------------------
+            if (userPicture.Length > 0)
+            {
+                // Resim Yolunu buluyor
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(userPicture.FileName);
+                // Veri tabanı yolunu buluyor
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Picture/", fileName);
+                // Kaydetmek için
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    userPicture.CopyToAsync(stream);
+                    trBlog.ImageUrl = fileName;
+                }
+            }
+            // Icon
+            if (ab.Length > 0)
+            {
+                // Resim Yolunu buluyor
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ab.FileName);
+                // Veri tabanı yolunu buluyor
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Picture/", fileName);
+                // Kaydetmek için
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    ab.CopyToAsync(stream);
+                    trBlog.Icon = fileName;
+                }
+            }
+
+            trBlog.IsDelate = false;
+            trBlog.EntryDate = DateTime.Now;
+            dr.OurServices.Add(trBlog);
+            dr.SaveChanges();
+            return RedirectToAction("ServiceList");
+            // }
+            // return View();
+
+        }
+        // Delete
+
+        public async Task<IActionResult> DeleteService(int id)
+        {
+            var findID = dr.Blogs.Find(id);
+            findID.IsDelate = true;
+            dr.SaveChanges();
+            return RedirectToAction("ServiceList");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ServiceUpdate(int id)
+        {
+            var getList = dr.Blogs.Find(id);
+            return View(getList);
+        }
+
+        // Get Update
+        [HttpPost]
+        public async Task<IActionResult> ServiceUpdate(OurService trBlog, IFormFile userPicture, IFormFile ab)
+        {
+
+            var returnDetail = dr.OurServices.Find(trBlog.Id);
+            // Resim Kaydetme----------------------------------------------
+            if (userPicture.Length > 0)
+            {
+                // Resim Yolunu buluyor
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(userPicture.FileName);
+                // Veri tabanı yolunu buluyor
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Picture/", fileName);
+                // Kaydetmek için
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    userPicture.CopyToAsync(stream);
+                    returnDetail.ImageUrl = fileName;
+                }
+            }
+
+            if (trBlog.ImageUrl != null)
+            {
+                returnDetail.ImageUrl = trBlog.ImageUrl;
+            }
+            // Icon
+            if (ab.Length > 0)
+            {
+                // Resim Yolunu buluyor
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ab.FileName);
+                // Veri tabanı yolunu buluyor
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Picture/", fileName);
+                // Kaydetmek için
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    ab.CopyToAsync(stream);
+                    returnDetail.Icon = fileName;
+                }
+            }
+
+            if (trBlog.Icon != null)
+            {
+                returnDetail.Icon = trBlog.Icon;
+            }
+
+            returnDetail.Title = trBlog.Title;
+            returnDetail.Description = trBlog.Description;
+
+            returnDetail.IsDelate = false;
+            dr.SaveChanges();
+            return RedirectToAction("ServiceList");
+        }
+        #endregion
+
+
+
+        #region Why Us 
+        // List Why Us
+        public async Task<IActionResult> WhyUsList()
+        {
+            var returnValue = dr.ThreeSteps.Where(k => k.IsDelate == false).OrderByDescending(k => k.EntryDate).ToList();
+            return View(returnValue);
+        }
+
+
+        // Delete
+
+        public async Task<IActionResult> DeleteWhyUs(int id)
+        {
+            var findID = dr.ThreeSteps.Find(id);
+            findID.IsDelate = true;
+            dr.SaveChanges();
+            return RedirectToAction("WhyUsList");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> WhyUsUpdate(int id)
+        {
+            var getList = dr.ThreeSteps.Find(id);
+            return View(getList);
+        }
+
+        // Get Update
+        [HttpPost]
+        public async Task<IActionResult> WhyUsUpdate(ThreeStepProgress biz, IFormFile userPicture)
+        {
+
+            var returnDetail = dr.ThreeSteps.Find(biz.Id);
+            // Resim Kaydetme----------------------------------------------
+            if (userPicture.Length > 0)
+            {
+                // Resim Yolunu buluyor
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(userPicture.FileName);
+                // Veri tabanı yolunu buluyor
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Picture/", fileName);
+                // Kaydetmek için
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    userPicture.CopyToAsync(stream);
+                    returnDetail.Image = fileName;
+                }
+            }
+
+            if (biz.Image != null)
+            {
+                returnDetail.Image = biz.Image;
+            }
+
+            returnDetail.Title = biz.Title;
+            returnDetail.Description = biz.Description;
+
+            returnDetail.IsDelate = false;
+            dr.SaveChanges();
+            return RedirectToAction("WhyUsList");
+        }
+
+        #endregion
+
 
 
 
