@@ -38,6 +38,7 @@ namespace Rehberlik.Controllers
             var mesajlar = dr.Contacts.Where(k => k.IsDelete == false).Count();
             ViewBag.mesajlar = mesajlar;
             return View();
+            // Daha Deveamı yapılabilir.
         }
 
 
